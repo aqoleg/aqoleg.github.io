@@ -1,0 +1,19 @@
+<!-- color #407F96 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet">
+    <defs>
+        <g id="a" stroke-linecap="round">
+            <line x1="140" y1="500" x2="180" y2="500" />
+            <line x1="820" y1="500" x2="860" y2="500" />
+            <!-- y = 1.778x - 494 -->
+            <line x1="370" y1="167.56" x2="393" y2="208.68" />
+            <line x1="666" y1="696.89" x2="714" y2="782.63" />
+            <line x1="630" y1="167.56" x2="607" y2="208.68" />
+            <line x1="304" y1="750.45" x2="286" y2="782.63" />
+        </g>
+    </defs>
+    <use xlink:href="#a" stroke="black" stroke-width="90" />
+    <ellipse cx="500" cy="500" rx="315" ry="305" fill="none" stroke="black" stroke-width="90" />
+    <use xlink:href="#a" stroke="#407F96" stroke-width="70" />
+    <ellipse cx="500" cy="500" rx="315" ry="305" fill="none" stroke="#407F96" stroke-width="70" />
+</svg>
