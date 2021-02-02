@@ -65,6 +65,7 @@
                 width: 80%;
                 max-width: 400px;
                 height: 240px;
+                background: transparent;
                 font-size: 16px;
                 resize: vertical;
                 outline: 0;
@@ -147,6 +148,7 @@
                     document.getElementById('writeme').onclick = function () {
                         document.getElementById('main').style.display = 'none';
                         document.getElementById('write').style.display = 'block';
+                        document.getElementById('message').placeholder = 'uw!';
                         document.getElementById('send').disabled = false;
                         history.pushState(null, 'writeme', '?write=');
                     };
