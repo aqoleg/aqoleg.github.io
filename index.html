@@ -147,6 +147,7 @@
                     document.getElementById('writeme').onclick = function () {
                         document.getElementById('main').style.display = 'none';
                         document.getElementById('write').style.display = 'block';
+                        document.getElementById('send').disabled = false;
                         history.pushState(null, 'writeme', '?write=');
                     };
                     display();
@@ -199,7 +200,6 @@
                     } else {
                         document.getElementById('main').style.display = 'none';
                         document.getElementById('write').style.display = 'block';
-                        document.getElementById('send').disabled = false;
                         var stopIndex = window.location.search.indexOf('&', startIndex);
                         var message;
                         if (stopIndex < 0) {
