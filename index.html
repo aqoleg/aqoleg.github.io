@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <title>aqoleg</title>
 
@@ -12,19 +12,15 @@
 
         <link rel="icon" href="icon.png" />
         <style>
+            div, input, button {
+                font-family: sans-serif, monospace;
+            }
             body {
                 margin: 0px;
                 text-align: center;
-                font-family: sans-serif, monospace;
-            }
-            #logo {
-                height: 160px;
-                opacity: 0;
-                background: url(logo.svg) center/contain no-repeat;
-                animation: logo 30s 60s forwards;
             }
             h1 {
-                margin: 0px;
+                margin-bottom: 0px;
                 font-size: 72px;
                 font-weight: normal;
             }
@@ -33,7 +29,7 @@
                 font-size: 48px;
                 font-weight: normal;
             }
-            p {
+            #main p {
                 margin: 8px 0px;
                 font-size: 16px;
             }
@@ -43,43 +39,90 @@
                 text-decoration: none;
                 outline: 0;
             }
-            a:focus {
+            #writeme {
+                display: block;
+                margin: 16px auto;
+                border: none;
+                background: transparent;
+                font-size: 16px;
+                cursor: pointer;
+                outline: 0;
+            }
+            a:focus, #writeme:focus {
                 text-decoration: underline;
             }
-
+            #write {
+                display: none;
+            }
+            #write p {
+                font-size: 14px;
+            }
+            textarea {
+                display: block;
+                margin: auto;
+                border: 1px solid black;
+                padding: 8px;
+                width: 80%;
+                max-width: 400px;
+                height: 240px;
+                font-size: 16px;
+                resize: vertical;
+                outline: 0;
+            }
+            textarea:focus {
+                border-color: #407F96;
+            }
+            #send {
+                display: block;
+                margin: 14px auto;
+                border: 1px solid black;
+                padding: 8px;
+                background: transparent;
+                font-size: 18px;
+                cursor: pointer;
+                outline: 0;
+            }
+            #send:focus {
+                border-color: #407F96;
+                color: #407F96;
+            }
+            #send:disabled {
+                display: none;
+            }
             @media (hover: hover) {
-                a:hover {
+                a:hover, button:hover {
                     color: #407F96;
                 }
-            }
-            @media (min-width: 600px) and (min-height: 600px) {
-                #logo {
-                    position: fixed;
-                    top: 0px;
-                    z-index: -1;
-                    width: 100%;
-                    height: 100%;
+                textarea:hover, #send:hover {
+                    border-color: #407F96;
                 }
+            }
+            @media (min-height: 600px) {
                 h1 {
-                    margin-top: calc(50vh - 110px);
+                    margin-top: 25vh;
                 }
-            }
-            @keyframes logo {
-                0% {opacity: 0}
-                100% {opacity: 1}
+                #write {
+                    margin-top: 10vh;
+                }
             }
         </style>
     </head>
     <body>
-        <div id="logo"></div>
-        <h1>aqoleg</h1>
-        <h2>developer</h2>
-        <p>
-            <a id="who" target="_blank" rel="noopener" href="https://duckduckgo.com/?q='aqoleg'">who?</a>
-            <a target="_blank" rel="noopener" href="https://github.com/aqoleg">what?</a>
-            <a target="_blank" rel="noopener" href="https://gitcoin.co/aqoleg">how much?</a>
-        </p>
-        <p>aqoleg@pm.me</p>
+        <div id="main">
+            <h1>aqoleg</h1>
+            <h2>developer</h2>
+            <p>
+                <a id="who" target="_blank" rel="noopener" href="https://duckduckgo.com/?q='aqoleg'">who?</a>
+                <a target="_blank" rel="noopener" href="https://github.com/aqoleg">what?</a>
+                <a target="_blank" rel="noopener" href="https://gitcoin.co/aqoleg">how much?</a>
+            </p>
+            <button id="writeme">write me</button>
+        </div>
+        <div id="write">
+            <p>Write your contacts if you want to get a response.</p>
+            <textarea id="message" placeholder="uw!" autofocus="autofocus" maxlength="1000"></textarea>
+            <button id="send">send</button>
+        </div>
         <script>
             'use strict';
             (function () {
@@ -91,14 +134,81 @@
                     'https://www.google.ru/search?q=aqoleg'
                 ];
                 var i = 0;
-                document.getElementById('who').onclick = function () {
-                    setTimeout(function () {
-                        if (++i === engines.length) {
-                            i = 0;
+
+                window.onload = function () {
+                    document.getElementById('who').onclick = function () {
+                        setTimeout(function () {
+                            if (++i === engines.length) {
+                                i = 0;
+                            }
+                            document.getElementById('who').href = engines[i];
+                        }, 500);
+                    };
+                    document.getElementById('writeme').onclick = function () {
+                        document.getElementById('main').style.display = 'none';
+                        document.getElementById('write').style.display = 'block';
+                        history.pushState(null, 'writeme', '?write=');
+                    };
+                    display();
+                    document.getElementById('send').onclick = function () {
+                        var message = document.getElementById('message').value;
+                        if (!message) {
+                            document.getElementById('message').placeholder =
+                                'write your message here (1 - 1000 symbols)';
+                            return;
                         }
-                        document.getElementById('who').href = engines[i];
-                    }, 500);
+                        message = navigator.userAgent + ' - ' + navigator.language + '\n\n' + message;
+                        document.getElementById('send').disabled = true;
+                        document.getElementById('message').value = '';
+                        document.getElementById('message').placeholder = 'sending...';
+                        fetch('https://api.telegram.org/bot1617972527:' +
+                              'AAG3vW6xi2FjdXDb6PTLXWLosti261d1Cck/sendMessage', {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({
+                                chat_id: 1079223062,
+                                text: message
+                            })
+                        }).then(function (response) {
+                            if (!response.ok) {
+                                response.text().then(console.error);
+                                throw new Error(response.status);
+                            }
+                            return response.json();
+                        }).then(function (json) {
+                            if (!json.ok) {
+                                console.error(JSON.stringify(json));
+                                throw new Error('not ok');
+                            }
+                            document.getElementById('message').placeholder = 'i will read it soon';
+                        }).catch(function (error) {
+                            document.getElementById('message').placeholder = error;
+                        });
+                    };
                 };
+
+                window.onpopstate = function (event) {
+                    display();
+                };
+
+                function display () {
+                    var startIndex = window.location.search.indexOf('write=');
+                    if (startIndex < 0) {
+                        document.getElementById('main').style.display = 'block';
+                        document.getElementById('write').style.display = 'none';
+                    } else {
+                        document.getElementById('main').style.display = 'none';
+                        document.getElementById('write').style.display = 'block';
+                        var stopIndex = window.location.search.indexOf('&', startIndex);
+                        var message;
+                        if (stopIndex < 0) {
+                            message = window.location.search.substring(startIndex + 6);
+                        } else {
+                            message = window.location.search.substring(startIndex + 6, stopIndex);
+                        }
+                        document.getElementById('message').value = message;
+                    }
+                }
             })();
         </script>
     </body>
