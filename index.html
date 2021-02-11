@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>aqoleg</title>
 
@@ -88,7 +88,8 @@
                 color: #407F96;
             }
             #send:disabled {
-                display: none;
+                border-color: gray;
+                cursor: wait;
             }
             @media (hover: hover) {
                 a:hover, button:hover {
@@ -113,7 +114,9 @@
             <h1>aqoleg</h1>
             <h2>developer</h2>
             <p>
-                <a id="who" target="_blank" rel="noopener" href="https://duckduckgo.com/?q='aqoleg'">who?</a>
+                <a id="who" target="_blank" rel="noopener" href="https://duckduckgo.com/?q='aqoleg'">
+                    who?
+                </a>
                 <a target="_blank" rel="noopener" href="https://github.com/aqoleg">what?</a>
                 <a target="_blank" rel="noopener" href="https://gitcoin.co/aqoleg">how much?</a>
             </p>
@@ -149,10 +152,10 @@
                         document.getElementById('main').style.display = 'none';
                         document.getElementById('write').style.display = 'block';
                         document.getElementById('message').placeholder = 'uw!';
+                        document.getElementById('message').value = '';
                         document.getElementById('send').disabled = false;
                         history.pushState(null, 'writeme', '?write=');
                     };
-                    display();
                     document.getElementById('send').onclick = function () {
                         var message = document.getElementById('message').value;
                         if (!message) {
@@ -160,10 +163,9 @@
                                 'write your message here (1 - 1000 symbols)';
                             return;
                         }
-                        message = navigator.userAgent + ' - ' + navigator.language + '\n\n' + message;
-                        document.getElementById('send').disabled = true;
                         document.getElementById('message').value = '';
                         document.getElementById('message').placeholder = 'sending...';
+                        document.getElementById('send').disabled = true;
                         fetch('https://api.telegram.org/bot1617972527:' +
                               'AAG3vW6xi2FjdXDb6PTLXWLosti261d1Cck/sendMessage', {
                             method: 'POST',
@@ -184,10 +186,23 @@
                                 throw new Error('not ok');
                             }
                             document.getElementById('message').placeholder = 'i will read it soon';
+                            document.getElementById('send').disabled = false;
                         }).catch(function (error) {
                             document.getElementById('message').placeholder = error;
+                            document.getElementById('send').disabled = false;
                         });
                     };
+                    display();
+                    var message = navigator.userAgent + ' - ' + navigator.language.substr(0, 2);
+                    fetch('https://api.telegram.org/bot1617972527:' +
+                          'AAG3vW6xi2FjdXDb6PTLXWLosti261d1Cck/sendMessage', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            chat_id: 1079223062,
+                            text: message
+                        })
+                    }).catch(console.error);
                 };
 
                 window.onpopstate = function (event) {
