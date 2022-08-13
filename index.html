@@ -1,113 +1,118 @@
 <!DOCTYPE html>
+<!-- aqoleg.com v1.0.0 github -->
 <html lang="en">
     <head>
         <title>aqoleg</title>
 
         <meta charset="utf-8" />
 
-        <meta name="description" content="aqoleg the developer" />
-        <meta name="keywords" content="aqo aqoleg evil developer" />
+        <meta name="description" content="aqoleg the evil developer" />
+        <meta name="keywords" content="aqo aqoleg evil blockchain developer" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#407F96" />
 
         <link rel="icon" href="icon.png" />
-        <link rel="stylesheet" href="style.css" />
+        <style>
+            html, body {
+                margin: 0px;
+                padding: 0px;
+            }
+            div {
+                font-family: monospace;
+                overflow-wrap: break-word;
+            }
+            a {
+                color: black;
+                outline: 0;
+            }
+            a:focus {
+                color: #407F96;
+            }
+
+            #logo {
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                z-index: -1;
+                background: center / contain no-repeat url(logo.svg);
+                opacity: 0.015;
+            }
+            #main {
+                margin: 32px auto;
+                width: 94%;
+                max-width: 800px;
+            }
+            p {
+                font-size: 16px;
+            }
+
+            @media (hover: hover) {
+                a:hover {
+                    color: #407F96;
+                }
+            }
+            @media (min-width: 560px) {
+                p {
+                    font-size: 18px;
+                }
+            }
+        </style>
     </head>
     <body>
-        <button id="back" title="back"></button>
-        <div id="start">
-            <h1>aqoleg</h1>
-            <h2>developer</h2>
-            <div>
-                <button id="startWho">who?</button>
-                <button id="startWhat">what?</button>
-                <button id="startHow">how much?</button>
-            </div>
-            <button id="startWrite">write me</button>
-        </div>
-        <div id="who">
-            <div>
-                <a target="_blank" rel="noopener" href="https://duckduckgo.com/?q=aqoleg">duckduckgo</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://ask.com/web?q=aqoleg">ask</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://bing.com/?q=aqoleg">bing</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://search.yahoo.com/search?p=aqoleg">yahoo</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://google.com/search?q=aqoleg">google</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://yandex.ru/search/?text=aqoleg">yandex</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://search.aol.com/aol/search?q=aqoleg">aol</a>
-            </div>
-        </div>
-        <div id="what">
-            <div>
-                <a target="_blank" rel="noopener" href="https://github.com/aqoleg/crypto">crypto</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://github.com/aqoleg/cat">cat</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://github.com/aqoleg/bookkeeper">bookkeeper</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://aqoleg.com/aqo">aqo</a>
-            </div>
-            <div>
+        <div id="logo"></div>
+        <div id="main">
+            <p>Hi! I am a blockchain developer.</p>
+            <p>If you are going to build or hack something on the blockchain -
+                <a target="_blank" rel="noopener" href="https://writeme.aqoleg.com">write me</a>.</p>
+            <p>This is my
+                <a target="_blank" rel="noopener" href="https://aqo.aqoleg.com">token aqo</a>.
+                And this is my
+                <a target="_blank" rel="noopener" href="https://aqoleg.com/fungi">nft fungi</a>.</p>
+            <p>I built a fixed price bond
                 <a target="_blank" rel="noopener" href="https://aqoleg.com/pitcoin">pitcoin</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://github.com/aqoleg/neurogame">neurogame</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://aqoleg.com/life">life</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://aqoleg.com/time">time</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://aqoleg.com/ktoolu">ktoolu</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://aqoleg.com/fungi">fungi</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://github.com/aqoleg/mc">mc</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://github.com/aqoleg/mquad">mquad</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://github.com/aqoleg/blzjava">blzjava</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://github.com/aqoleg/multisig">multisig</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://github.com/aqoleg/statistics">statistics</a>
-            </div>
+                and a java library for the blockchain database service
+                <a target="_blank" rel="noopener" href="https://github.com/aqoleg/blzjava">blzjava</a>.</p>
+            <p>Practicing
+                <a target="_blank" rel="noopener" href="https://crypto.aqoleg.com">cryptography</a>,
+                building a
+                <a target="_blank" rel="noopener" href="https://bitcoin.aqoleg.com">bitcoin wallet</a>
+                from scratch.</p>
+            <p>These are my contest entries - tokenized
+                <a target="_blank" rel="noopener" href="https://github.com/aqoleg/mc">carbon credits</a>, a
+                <a target="_blank" rel="noopener" href="https://github.com/aqoleg/mquad">quadratic
+                    funding</a> experiment and a
+                <a target="_blank" rel="noopener" href="https://github.com/aqoleg/multisig">multisig
+                    wallet</a>.</p>
+            <p>Playing with android - all in one
+                <a target="_blank" rel="noopener" href="https://github.com/aqoleg/cat">maps and
+                    tracklog</a>,
+                <a target="_blank" rel="noopener" href="https://github.com/aqoleg/bookkeeper">tool
+                    for accounting</a> and some
+                <a target="_blank" rel="noopener" href="https://github.com/aqoleg/statistics">graphics</a>.
+            </p>
+            <p>Teaching a
+                <a target="_blank" rel="noopener" href="https://github.com/aqoleg/neurogame">neural
+                    network</a> to play a game.</p>
+            <p>Check the time in the true
+                <a target="_blank" rel="noopener" href="https://time.aqoleg.com">calendar</a>, play
+                <a target="_blank" rel="noopener" href="https://aqoleg.com/life">the game of life</a>.</p>
+            <p>A bit of a
+                <a target="_blank" rel="noopener" href="https://aqoleg.com/ktoolu">smart home</a>.</p>
+            <p>The first
+                <a target="_blank" rel="noopener" href="https://biginteger.aqoleg.com">code</a>.</p>
+            <p>About me
+                <a target="_blank" rel="noopener" href="https://abstract.aqoleg.com">offchain
+                    and offline</a>.</p>
         </div>
-        <div id="how">
-            <div>
-                <a target="_blank" rel="noopener" href="https://aqoleg.com/aqo">invest</a>
-            </div>
-            <div>
-                <a target="_blank" rel="noopener" href="https://gitcoin.co/aqoleg">hire</a>
-            </div>
-        </div>
-        <div id="write">
-            <p>Write to any mail at this domain or send a message using this form.</p>
-            <textarea id="writeText" autofocus="autofocus" maxlength="1000"></textarea>
-            <button id="writeSend">send</button>
-        </div>
-        <script src="script.js"></script>
+        <script>
+            fetch('https://aqoleg.com/log', {
+                method: 'POST',
+                body: JSON.stringify({
+                    user: 'aqoleg.github.io' + decodeURI(window.location.search),
+                    language: typeof navigator.language === 'string' ? navigator.language.substr(0, 2) : null,
+                    timeZone: new Date().getTimezoneOffset() / (-60)
+                })
+            }).catch(console.error);
+        </script>
     </body>
 </html>
